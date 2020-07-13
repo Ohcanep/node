@@ -100,6 +100,7 @@ static int uv__async_spin(uv_async_t* handle) {
       cpu_relax();
     }
 
+    printf("uv__async_spin > sched_yield [cpu:%d]\n", sched_getcpu());
     /* Yield the CPU. We may have preempted the other thread while it's
      * inside the critical section and if it's running on the same CPU
      * as us, we'll just burn CPU cycles until the end of our time slice.
